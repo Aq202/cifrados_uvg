@@ -12,14 +12,16 @@ from binary_to_ascii import binary_to_decimal
 
 def binary_to_base64(bin_str):
     """
-    Convierte una cadena binaria a un texto en base 64 sin usar librerías de base64.
+    Convierte una cadena binaria a un texto en base 64.
     """
     # Tabla de caracteres Base64
     base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
     
-    # Rellenar para que longitud sea un múltiplo de 6 (rellenar con ceros si es necesario)
+    # Rellenar para que longitud sea un múltiplo de 6
+    zeros_added = 0
     while len(bin_str) % 6 != 0:
-        bin_str = '0' + bin_str
+        bin_str = bin_str + '0'
+        zeros_added += 1
     
     # Dividir la cadena binaria en bloques de 6 bits
     base64_result = ""
@@ -28,7 +30,7 @@ def binary_to_base64(bin_str):
         decimal_value = binary_to_decimal(block)
         base64_result += base64_chars[decimal_value]  # Obtener char correspondiente
 
-    return base64_result
+    return base64_result + '=' * int(zeros_added / 2)
 
 if __name__ == "__main__":
     binary_text = input("Ingresar cadena binaria a convertir a base64: ")
