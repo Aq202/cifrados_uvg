@@ -7,11 +7,6 @@ from binary_to_ascii import binary_to_text
 def base64_to_text(base64_str):
 
     binary_str = base64_to_binary(base64_str)
-    print(binary_str)
-    # Eliminar padding
-    num_paddings = base64_str.count("=")
-    if num_paddings > 0:
-        binary_str = binary_str[0:-2*num_paddings]
     
     # Convertir cada byte a texto (ascii)
     text = ""

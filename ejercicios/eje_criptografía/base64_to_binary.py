@@ -34,9 +34,14 @@ def base64_to_binary(base64_str):
         # Añadimos el fragmento binario al resultado final
         binary_result += binary_chunk
     
+    # Eliminar padding
+    num_paddings = base64_str.count("=")
+    if num_paddings > 0:
+        binary_result = binary_result[0:-2*num_paddings]
+
     return binary_result
 
 if __name__ == "__main__":
     base64_text = input("Ingresar texto base64 a convertir a binario: ")
     binary_representation = base64_to_binary(base64_text)
-    print(binary_representation)
+    print("Binario: ",binary_representation)
