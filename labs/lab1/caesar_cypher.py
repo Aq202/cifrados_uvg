@@ -12,7 +12,8 @@ def caesar_cypher(text, shift=3, alphabet="abcdefghijklmnñopqrstuvwxyz"):
         elif lower_char in alphabet:
             # realizar corrimiento hacia la derecha
             index = (alphabet.index(lower_char) + shift) % len(alphabet)
-            cypher_text += alphabet[index]
+            new_char = alphabet[index]
+            cypher_text += new_char.upper() if char.isupper() else new_char # Mantener case
 
     return cypher_text
 
@@ -27,11 +28,12 @@ def caesar_decypher(text, shift=3, alphabet="abcdefghijklmnñopqrstuvwxyz"):
         elif lower_char in alphabet:
             # realizar corrimiento hacia la derecha
             index = (alphabet.index(lower_char) - shift) % len(alphabet)
-            decypher_text += alphabet[index]
+            new_char = alphabet[index]
+            decypher_text += new_char.upper() if char.isupper() else new_char # Mantener case
 
     return decypher_text
 if __name__ == "__main__":
-    text = "ATACAR AL AMANECER"
+    text = "Atacar al amanecer"
     cypher_text = caesar_cypher(text)
     print("Texto cifrado: ", cypher_text)
     print("Texto decifrado: ", caesar_decypher(cypher_text))

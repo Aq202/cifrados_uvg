@@ -17,7 +17,8 @@ def afines_cypher(text, a, b, alphabet="abcdefghijklmnñopqrstuvwxyz"):
         elif lower_char in alphabet:
             # Aplicar cifrado ax +b (mod m)
             index = (a * alphabet.index(lower_char) + b) % len(alphabet)
-            cypher_text += alphabet[index]
+            new_char = alphabet[index]
+            cypher_text += new_char.upper() if char.isupper() else new_char # Mantener case
 
     return cypher_text
 
@@ -52,12 +53,13 @@ def afines_decypher(text, a, b, alphabet="abcdefghijklmnñopqrstuvwxyz"):
             index_y = alphabet.index(lower_char)  # Índice del carácter cifrado
             # Aplica la fórmula para descifrar: a_inv * (y - b) mod m
             index_x = (a_inv * (index_y - b)) % m
-            decypher_text += alphabet[index_x]
+            new_char = alphabet[index_x]
+            decypher_text += new_char.upper() if char.isupper() else new_char # Mantener case
 
     return decypher_text
 
 if __name__ == "__main__":
-    text = "ATACAR AL AMANECER"
+    text = "Atacar al AMANECER"
     a = 2
     b = 8
     cypher_text = afines_cypher(text, a, b)
