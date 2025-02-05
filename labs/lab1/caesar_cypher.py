@@ -1,35 +1,31 @@
 """
 Autor: Diego Morales Aquino
 """
+from clean_text import clean_text
+
 def caesar_cypher(text, shift=3, alphabet="abcdefghijklmnñopqrstuvwxyz"):
 
     cypher_text = ""
+    text = clean_text(text, alphabet)
     for char in text:
         
-        lower_char = char.lower()
-        if lower_char == " ":
-            cypher_text += char
-        elif lower_char in alphabet:
-            # realizar corrimiento hacia la derecha
-            index = (alphabet.index(lower_char) + shift) % len(alphabet)
-            new_char = alphabet[index]
-            cypher_text += new_char.upper() if char.isupper() else new_char # Mantener case
+        # realizar corrimiento hacia la derecha
+        index = (alphabet.index(char) + shift) % len(alphabet)
+        new_char = alphabet[index]
+        cypher_text += new_char
 
     return cypher_text
 
 def caesar_decypher(text, shift=3, alphabet="abcdefghijklmnñopqrstuvwxyz"):
 
     decypher_text = ""
+    text = clean_text(text, alphabet)
     for char in text:
         
-        lower_char = char.lower()
-        if lower_char == " ":
-            decypher_text += char
-        elif lower_char in alphabet:
-            # realizar corrimiento hacia la derecha
-            index = (alphabet.index(lower_char) - shift) % len(alphabet)
-            new_char = alphabet[index]
-            decypher_text += new_char.upper() if char.isupper() else new_char # Mantener case
+        # realizar corrimiento hacia la derecha
+        index = (alphabet.index(char) - shift) % len(alphabet)
+        new_char = alphabet[index]
+        decypher_text += new_char
 
     return decypher_text
 if __name__ == "__main__":

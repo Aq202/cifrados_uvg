@@ -6,19 +6,18 @@ Este código fue realizado con apoyo del modelo de IA ChatGPT 3
 Link de la conversación:
 https://chatgpt.com/share/67a18e05-8640-8009-be4a-241f8e105f73
 """
+from clean_text import clean_text
+
 def afines_cypher(text, a, b, alphabet="abcdefghijklmnñopqrstuvwxyz"):
 
     cypher_text = ""
+    text = clean_text(text, alphabet)
     for char in text:
         
-        lower_char = char.lower()
-        if lower_char == " ":
-            cypher_text += char
-        elif lower_char in alphabet:
-            # Aplicar cifrado ax +b (mod m)
-            index = (a * alphabet.index(lower_char) + b) % len(alphabet)
-            new_char = alphabet[index]
-            cypher_text += new_char.upper() if char.isupper() else new_char # Mantener case
+        # Aplicar cifrado ax +b (mod m)
+        index = (a * alphabet.index(char) + b) % len(alphabet)
+        new_char = alphabet[index]
+        cypher_text += new_char
 
     return cypher_text
 
@@ -45,16 +44,13 @@ def afines_decypher(text, a, b, alphabet="abcdefghijklmnñopqrstuvwxyz"):
     a_inv = mod_inverse(a, m)  # Calcula el inverso de a módulo m
     
     decypher_text = ""
+    text = clean_text(text, alphabet)
     for char in text:
-        lower_char = char.lower()
-        if lower_char == " ":
-            decypher_text += char
-        elif lower_char in alphabet:
-            index_y = alphabet.index(lower_char)  # Índice del carácter cifrado
-            # Aplica la fórmula para descifrar: a_inv * (y - b) mod m
-            index_x = (a_inv * (index_y - b)) % m
-            new_char = alphabet[index_x]
-            decypher_text += new_char.upper() if char.isupper() else new_char # Mantener case
+        index_y = alphabet.index(char)  # Índice del carácter cifrado
+        # Aplica la fórmula para descifrar: a_inv * (y - b) mod m
+        index_x = (a_inv * (index_y - b)) % m
+        new_char = alphabet[index_x]
+        decypher_text += new_char
 
     return decypher_text
 
