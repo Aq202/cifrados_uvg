@@ -22,7 +22,7 @@ def caesar_bruteforce(text, alphabet="abcdefghijklmnñopqrstuvwxyz"):
         
         results.append((shift, metric, decyphered_text))
 
-    return sorted(results, key=lambda x: x[1], reverse=True)
+    return sorted(results, key=lambda x: x[1], reverse=False)
 
 if __name__ == "__main__":
     current_path = os.path.dirname(os.path.abspath(__file__))

@@ -43,7 +43,7 @@ def vigenere_bruteforce(text, key_start ="", key_max_len = 6, alphabet="abcdefgh
             results.append((complete_key, metric, decyphered_text))
 
         
-    return sorted(results, key=lambda x: x[1], reverse=True)
+    return sorted(results, key=lambda x: x[1], reverse=False)
 
 
             
@@ -55,6 +55,6 @@ if __name__ == "__main__":
         text = f.read()
         results = vigenere_bruteforce(text, key_start="pa")
 
-        for result in results[-20:]:
+        for result in results[0:20]:
             key, metric, decyphered_text = result
             print(f"Key: {key}, Métrica: {metric}, Texto descifrado: {decyphered_text}\n")

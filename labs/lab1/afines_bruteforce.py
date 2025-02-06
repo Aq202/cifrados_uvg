@@ -26,7 +26,7 @@ def afines_bruteforce(text, alphabet="abcdefghijklmnñopqrstuvwxyz"):
             
             results.append((a, b, metric, decyphered_text))
 
-    results = sorted(results, key=lambda x: x[2], reverse=True)
+    results = sorted(results, key=lambda x: x[2], reverse=False)
     return results
 
 if __name__ == "__main__":
@@ -37,6 +37,6 @@ if __name__ == "__main__":
         text = f.read()
         results = afines_bruteforce(text)
 
-        for result in results:
+        for result in results[0:20]:
             a, b, metric, decyphered_text = result
             print(f"a: {a}, b: {b}, Métrica: {metric}, Texto descifrado: {decyphered_text}\n")
