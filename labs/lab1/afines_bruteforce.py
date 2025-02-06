@@ -1,11 +1,10 @@
 import os
 from utils.metric import eval_distr
 from utils.get_text_probability_distr import get_text_probability_distr
-from utils.sp_frequencies import sp_frequencies
 from utils.clean_text import clean_text
 from afines_cypher import extended_gcd, afines_decypher
 
-def afines_bruteforce(text, text_to_find = None, alphabet="abcdefghijklmnñopqrstuvwxyz"):
+def afines_bruteforce(text, alphabet="abcdefghijklmnñopqrstuvwxyz"):
    
     # Limpiar texto
     text = clean_text(text, alphabet)
