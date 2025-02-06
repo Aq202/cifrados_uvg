@@ -6,7 +6,7 @@ Este código fue realizado con apoyo del modelo de IA ChatGPT 3
 Link de la conversación:
 https://chatgpt.com/share/67a18e05-8640-8009-be4a-241f8e105f73
 """
-from clean_text import clean_text
+from utils.clean_text import clean_text
 
 def afines_cypher(text, a, b, alphabet="abcdefghijklmnñopqrstuvwxyz"):
 

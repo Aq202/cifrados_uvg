@@ -1,7 +1,7 @@
 """
 Autor: Diego Morales Aquino
 """
-from clean_text import clean_text
+from utils.clean_text import clean_text
 
 def caesar_cypher(text, shift=3, alphabet="abcdefghijklmnñopqrstuvwxyz"):
 

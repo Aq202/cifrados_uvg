@@ -1,7 +1,7 @@
 """
 Autor: Diego Morales Aquino
 """
-from clean_text import clean_text
+from utils.clean_text import clean_text
 
 def vigenere_cypher(text, key, alphabet="abcdefghijklmnñopqrstuvwxyz"):
 
