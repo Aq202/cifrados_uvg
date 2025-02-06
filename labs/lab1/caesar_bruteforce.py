@@ -22,9 +22,7 @@ def caesar_bruteforce(text, alphabet="abcdefghijklmnñopqrstuvwxyz"):
         
         results.append((shift, metric, decyphered_text))
 
-    results = sorted(results, key=lambda x: x[1], reverse=False)
-    for shift, metric, decyphered_text in results:
-        print(f"Shift: {shift}, Métrica: {metric}, Texto descifrado: {decyphered_text}\n")
+    return sorted(results, key=lambda x: x[1], reverse=False)
 
 if __name__ == "__main__":
     current_path = os.path.dirname(os.path.abspath(__file__))
@@ -32,5 +30,6 @@ if __name__ == "__main__":
     
     with open(file_path, "r", encoding="utf-8") as f:
         text = f.read()
-        caesar_bruteforce(text)
-
+        results = caesar_bruteforce(text)
+        for shift, metric, decyphered_text in results:
+            print(f"Shift: {shift}, Métrica: {metric}, Texto descifrado: {decyphered_text}\n")
